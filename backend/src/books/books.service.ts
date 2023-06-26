@@ -46,6 +46,6 @@ export class BooksService {
   }
 
   delete(id: string): void {
-    this.books.filter((book) => book.id !== id);
+    this.books = this.books.filter((book) => book.id !== id);
   }
 }
