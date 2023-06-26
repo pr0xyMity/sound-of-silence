@@ -9,11 +9,11 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { BookService } from './books.service';
+import { BooksService } from './books.service';
 
 @Controller('books')
 export class BooksController {
-  constructor(private readonly bookService: BookService) {}
+  constructor(private readonly bookService: BooksService) {}
 
   @Get()
   getBooks(@Query() paginationQuery): string[] {
