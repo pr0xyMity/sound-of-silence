@@ -10,13 +10,14 @@ import {
   Query,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
+import { Book } from './entities/book.entity';
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly bookService: BooksService) {}
 
   @Get()
-  getBooks(@Query() paginationQuery): string[] {
+  getBooks(@Query() paginationQuery): Book[] {
     const { limit, offset } = paginationQuery;
     return this.bookService.getBooks(limit, offset);
   }
