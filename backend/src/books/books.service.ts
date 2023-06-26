@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from './entities/book.entity';
 
 @Injectable()
@@ -24,7 +24,11 @@ export class BooksService {
   }
 
   getBook(id: string): Book {
-    return this.books.find((book) => book.id === id);
+    const book = this.books.find((book) => book.id === id);
+    if (!book) {
+      throw new NotFoundException(`Book with id: ${id}`);
+    }
+    return book;
   }
 
   createBody(body): Book {
