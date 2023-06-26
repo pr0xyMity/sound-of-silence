@@ -13,4 +13,16 @@ export class BookService {
   createBody(body) {
     return body;
   }
+
+  updateWhole(id: string, body) {
+    return `Update whole with id ${id} - ${JSON.stringify(body)}`;
+  }
+
+  update(id: string, body) {
+    return `Update with id ${id} - ${JSON.stringify(body)}`;
+  }
+
+  delete(id: string) {
+    return `Deleted ${id}`;
+  }
 }
