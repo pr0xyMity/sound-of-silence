@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { BookService } from './books.service';
 
@@ -15,8 +16,9 @@ export class BooksController {
   constructor(private readonly bookService: BookService) {}
 
   @Get()
-  getBooks(): string[] {
-    return this.bookService.getBooks();
+  getBooks(@Query() paginationQuery): string[] {
+    const { limit, offset } = paginationQuery;
+    return this.bookService.getBooks(limit, offset);
   }
 
   @Get(':id')

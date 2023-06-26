@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class BookService {
-  getBooks(): string[] {
-    return ['Book 1', 'Book 2', 'Book 3'];
+  getBooks(limit, offset): string[] {
+    return ['Book 1', 'Book 2', 'Book 3', limit, offset];
   }
 
   getBook(id: string): string {
