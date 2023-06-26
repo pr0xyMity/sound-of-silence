@@ -9,4 +9,8 @@ export class BookService {
   getBook(id: string): string {
     return `Book with id - ${id}`;
   }
+
+  createBody(body) {
+    return body;
+  }
 }
