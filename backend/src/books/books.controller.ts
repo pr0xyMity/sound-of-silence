@@ -11,6 +11,9 @@ import {
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { Book } from './entities/book.entity';
+import { CreateBookDto } from './dto/create-book.dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto/update-book.dto';
+import { UpdateWholeBookDto } from './dto/update-whole-book.dto/update-whole-book.dto';
 
 @Controller('books')
 export class BooksController {
@@ -28,18 +31,21 @@ export class BooksController {
   }
 
   @Post()
-  create(@Body() body) {
-    return this.bookService.createBody(body);
+  create(@Body() createBookDto: CreateBookDto) {
+    return this.bookService.createBody(createBookDto);
   }
 
   @Put(':id')
-  updateWhole(@Param('id') id: string, @Body() body) {
-    return this.bookService.updateWhole(id, body);
+  updateWhole(
+    @Param('id') id: string,
+    @Body() updateWholeBookDto: UpdateWholeBookDto,
+  ) {
+    return this.bookService.updateWhole(id, updateWholeBookDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body) {
-    return this.bookService.update(id, body);
+  update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
+    return this.bookService.update(id, updateBookDto);
   }
 
   @Delete(':id')
