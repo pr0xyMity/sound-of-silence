@@ -11,8 +11,8 @@ import {
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { Book } from './entities/book.entity';
-import { CreateBookDto } from './dto/create-book.dto/create-book.dto';
-import { UpdateBookDto } from './dto/update-book.dto/update-book.dto';
+import { CreateBookDto } from './dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Controller('books')
 export class BooksController {
