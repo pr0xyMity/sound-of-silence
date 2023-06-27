@@ -18,6 +18,9 @@ export class Book {
   @Column()
   author: string;
 
+  @Column({ default: 0 })
+  recommendations: number;
+
   @JoinTable()
   @ManyToMany((type) => Chapter, (chapter) => chapter.books, { cascade: true })
   chapters: Chapter[];
