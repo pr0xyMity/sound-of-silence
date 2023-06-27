@@ -19,6 +19,6 @@ export class Book {
   author: string;
 
   @JoinTable()
-  @ManyToMany((type) => Chapter, (chapter) => chapter.books)
+  @ManyToMany((type) => Chapter, (chapter) => chapter.books, { cascade: true })
   chapters: Chapter[];
 }
