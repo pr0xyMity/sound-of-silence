@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BooksModule } from './books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       // TODO: Disable for production
       synchronize: true,
     }),
+    ConfigModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],
