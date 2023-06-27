@@ -3,7 +3,7 @@ import { Chapter } from '../entities/chapter.entity';
 
 export class CreateBookDto {
   @IsString()
-  readonly name: string;
+  readonly title: string;
   @IsString()
   readonly author: string;
   @IsObject({ each: true })

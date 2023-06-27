@@ -13,7 +13,10 @@ export class Book {
   id: number;
 
   @Column()
-  name: string;
+  title: string;
+
+  @Column({ nullable: true })
+  description: string;
 
   @Column()
   author: string;
