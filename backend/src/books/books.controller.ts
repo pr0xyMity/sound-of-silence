@@ -13,15 +13,15 @@ import { BooksService } from './books.service';
 import { Book } from './entities/book.entity';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly bookService: BooksService) {}
 
   @Get()
-  getBooks(@Query() paginationQuery): Promise<Book[]> {
-    const { limit, offset } = paginationQuery;
-    return this.bookService.getAll(limit, offset);
+  getBooks(@Query() paginationQueryDto: PaginationQueryDto): Promise<Book[]> {
+    return this.bookService.getAll(paginationQueryDto);
   }
 
   @Get(':id')

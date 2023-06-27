@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Chapter } from './entities/chapter.entity';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 
 @Injectable()
 export class BooksService {
@@ -15,8 +16,13 @@ export class BooksService {
     private readonly chapterRepository: Repository<Chapter>,
   ) {}
 
-  getAll(limit = 0, offset = 10): Promise<Book[]> {
-    return this.bookRepository.find({ relations: { chapters: true } });
+  getAll(paginationQueryDto: PaginationQueryDto): Promise<Book[]> {
+    const { limit, offset } = paginationQueryDto;
+    return this.bookRepository.find({
+      relations: { chapters: true },
+      skip: offset,
+      take: limit,
+    });
   }
 
   async getOne(id: string): Promise<Book> {
