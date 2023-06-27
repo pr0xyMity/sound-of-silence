@@ -1,51 +1,47 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from './entities/book.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateBookDto } from './dto/create-book.dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto/update-book.dto';
 
 @Injectable()
 export class BooksService {
-  //
-  // Mocking books data for service layer testing
-  //
-  private books: Book[] = [
-    {
-      id: '1',
-      name: "Dante's Inferno",
-      author: 'Dante Alighieri',
-    },
-    {
-      id: '2',
-      name: 'Name of the Wind',
-      author: 'Patrick Rothfuss',
-    },
-  ];
+  constructor(
+    @InjectRepository(Book)
+    private readonly bookRepository: Repository<Book>,
+  ) {}
 
-  getBooks(limit = 0, offset = 0): Book[] {
-    return this.books.slice(offset, this.books.length + limit);
+  async getAll(limit = 0, offset = 10): Promise<Book[]> {
+    return await this.bookRepository.find();
   }
 
-  getBook(id: string): Book {
-    const book = this.books.find((book) => book.id === id);
+  async getOne(id: string): Promise<Book> {
+    const book = await this.bookRepository.findOne({ where: { id: +id } });
     if (!book) {
       throw new NotFoundException(`Book with id: ${id}`);
     }
     return book;
   }
 
-  createBody(body): Book {
-    return Book.fromJSON(body);
+  create(createBookDto: CreateBookDto): Promise<Book> {
+    const book = this.bookRepository.create(createBookDto);
+    return this.bookRepository.save(book);
   }
 
-  updateWhole(id: string, body): void {
-    const bookIndex = this.books.findIndex((book) => book.id === id);
-    this.books[bookIndex] = Book.fromJSON(body);
+  async update(id: string, updateBookDto: UpdateBookDto): Promise<Book> {
+    const book = await this.bookRepository.preload({
+      id: +id,
+      ...updateBookDto,
+    });
+    if (!book) {
+      throw new NotFoundException(`Book with id: ${id}`);
+    }
+    return this.bookRepository.save(book);
   }
 
-  update(id: string, body): void {
-    const bookIndex = this.books.findIndex((book) => book.id === id);
-    this.books[bookIndex] = { ...this.books[bookIndex], ...body };
-  }
-
-  delete(id: string): void {
-    this.books = this.books.filter((book) => book.id !== id);
+  async remove(id: string): Promise<void> {
+    const book = await this.bookRepository.findOne({ where: { id: +id } });
+    await this.bookRepository.remove(book);
   }
 }

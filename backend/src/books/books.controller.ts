@@ -13,34 +13,30 @@ import { BooksService } from './books.service';
 import { Book } from './entities/book.entity';
 import { CreateBookDto } from './dto/create-book.dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto/update-book.dto';
-import { UpdateWholeBookDto } from './dto/update-whole-book.dto/update-whole-book.dto';
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly bookService: BooksService) {}
 
   @Get()
-  getBooks(@Query() paginationQuery): Book[] {
+  getBooks(@Query() paginationQuery): Promise<Book[]> {
     const { limit, offset } = paginationQuery;
-    return this.bookService.getBooks(limit, offset);
+    return this.bookService.getAll(limit, offset);
   }
 
   @Get(':id')
   getBook(@Param('id') id: string) {
-    return this.bookService.getBook(id);
+    return this.bookService.getOne(id);
   }
 
   @Post()
   create(@Body() createBookDto: CreateBookDto) {
-    return this.bookService.createBody(createBookDto);
+    return this.bookService.create(createBookDto);
   }
 
   @Put(':id')
-  updateWhole(
-    @Param('id') id: string,
-    @Body() updateWholeBookDto: UpdateWholeBookDto,
-  ) {
-    return this.bookService.updateWhole(id, updateWholeBookDto);
+  updateWhole(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
+    return this.bookService.update(id, updateBookDto);
   }
 
   @Patch(':id')
@@ -50,6 +46,6 @@ export class BooksController {
 
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.bookService.delete(id);
+    return this.bookService.remove(id);
   }
 }

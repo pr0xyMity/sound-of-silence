@@ -1,13 +1,13 @@
-export class Book {
-  id: string;
-  name: string;
-  author: string;
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-  static fromJSON(json: any): Book {
-    const book = new Book();
-    book.id = json.id;
-    book.name = json.name;
-    book.author = json.author;
-    return book;
-  }
+@Entity()
+export class Book {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+
+  @Column()
+  author: string;
 }
