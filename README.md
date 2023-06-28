@@ -1,5 +1,7 @@
 # Sound of Silence
 
+![SoundOfSilence](https://github.com/pr0xyMity/sound-of-silence/assets/18540580/e3879a44-c826-4bbd-bfb8-c870364a8cb6)
+
 Introducing "Sound of Silence" a revolutionary app designed to enhance your reading experience by immersing you in a world of soundscapes that perfectly complement each chapter of your favorite book. Sound of Silence brings literature to life by adding an auditory dimension, creating a captivating and immersive storytelling experience like never before.
 
 ### Short introduction:
