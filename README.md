@@ -2,7 +2,9 @@
 
 ![SoundOfSilence](https://github.com/pr0xyMity/sound-of-silence/assets/18540580/e3879a44-c826-4bbd-bfb8-c870364a8cb6)
 
-Introducing "Sound of Silence" a revolutionary app designed to enhance your reading experience by immersing you in a world of soundscapes that perfectly complement each chapter of your favorite book. Sound of Silence brings literature to life by adding an auditory dimension, creating a captivating and immersive storytelling experience like never before.
+## The project will be based on ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white) and ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+
+#### Introducing "Sound of Silence" a revolutionary app designed to enhance your reading experience by immersing you in a world of soundscapes that perfectly complement each chapter of your favorite book. Sound of Silence brings literature to life by adding an auditory dimension, creating a captivating and immersive storytelling experience like never before.
 
 ### Short introduction:
 1. Book Library: Access curated soundscapes that match different book genres.
