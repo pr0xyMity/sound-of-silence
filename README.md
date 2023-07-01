@@ -1,8 +1,7 @@
 # 📖 Sound of Silence
 Introducing "Sound of Silence" a revolutionary app designed to **enhance your reading experience** by immersing you in a world of **soundscapes that perfectly complement each chapter** of your favorite **book**. Sound of Silence brings literature to life by adding **an auditory dimension**, creating a captivating and immersive storytelling experience like never before.
 
-![SoundOfSilence](https://github.com/pr0xyMity/sound-of-silence/assets/18540580/e3879a44-c826-4bbd-bfb8-c870364a8cb6)
-
+![SoundOfSilence](https://github.com/pr0xyMity/sound-of-silence/assets/18540580/1fe177e0-f52c-4c72-ac49-7fb132f1d0bd)
 
 # Introduction:
 Imagine an apple, done easy. 
