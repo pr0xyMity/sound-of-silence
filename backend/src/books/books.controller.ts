@@ -30,11 +30,13 @@ export class BooksController {
   }
 
   @Get(':id')
+  @Public()
   getBook(@Param('id') id: string) {
     return this.bookService.getOne(id);
   }
 
   @Post()
+  @Public()
   create(@Body() createBookDto: CreateBookDto) {
     return this.bookService.create(createBookDto);
   }
