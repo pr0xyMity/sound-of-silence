@@ -15,6 +15,7 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { ApiForbiddenResponse, ApiTags } from '@nestjs/swagger';
+import { Public } from 'src/common/decorators/public.decorator';
 
 @ApiTags('books')
 @Controller('books')
@@ -23,16 +24,19 @@ export class BooksController {
 
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @Get()
+  @Public()
   getBooks(@Query() paginationQueryDto: PaginationQueryDto): Promise<Book[]> {
     return this.bookService.getAll(paginationQueryDto);
   }
 
   @Get(':id')
+  @Public()
   getBook(@Param('id') id: string) {
     return this.bookService.getOne(id);
   }
 
   @Post()
+  @Public()
   create(@Body() createBookDto: CreateBookDto) {
     return this.bookService.create(createBookDto);
   }
