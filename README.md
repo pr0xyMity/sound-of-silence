@@ -4,7 +4,6 @@ Introducing "Sound of Silence" a revolutionary app designed to **enhance your re
 ![SoundOfSilence](https://github.com/pr0xyMity/sound-of-silence/assets/18540580/ad4654b4-f66b-4c78-b03b-f541e45df499)
 
 # Introduction:
-Imagine an apple, done easy. 
 Let's read a paragraph and imagine it. 
 
 ```
