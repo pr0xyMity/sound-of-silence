@@ -6,7 +6,7 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Chapter } from './entities/chapter.entity';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
-import { Event } from 'src/events/entities/event.entity';
+import { Event } from '../events/entities/event.entity';
 
 @Injectable()
 export class BooksService {
@@ -18,7 +18,7 @@ export class BooksService {
     private readonly dataSource: DataSource,
   ) {}
 
-  getAll(paginationQueryDto: PaginationQueryDto): Promise<Book[]> {
+  find(paginationQueryDto: PaginationQueryDto): Promise<Book[]> {
     const { limit, offset } = paginationQueryDto;
     return this.bookRepository.find({
       relations: { chapters: true },
@@ -27,13 +27,13 @@ export class BooksService {
     });
   }
 
-  async getOne(id: string): Promise<Book> {
+  async findOne(id: string): Promise<Book> {
     const book = await this.bookRepository.findOne({
       where: { id: +id },
       relations: { chapters: true },
     });
     if (!book) {
-      throw new NotFoundException(`Book with id: ${id}`);
+      throw new NotFoundException(`Book #${id} not found`);
     }
     return book;
   }
