@@ -17,7 +17,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "pretest:e2e": "docker compose up -d test-db",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "posttest:e2e": "docker compose stop test-db && docker compose rm -f test-db"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -75,6 +77,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "modulePaths": [
+      "<rootDir>"
+    ]
   }
 }
