@@ -72,6 +72,7 @@ The flutter app is being in design phase. Will be available soon
 # How it works in details:
 1. Book Library: Access curated soundscapes that match different book genres.
 2. ISBN Code Integration: Scan or enter the ISBN code to seamlessly integrate the app with your book.
-3. Synchronized Soundscapes: Enjoy soundscapes that complement the atmosphere and events of each chapter.
-4. Seamless Transitions: Experience uninterrupted reading with smooth transitions between soundscapes with just one click.
-5. User-Generated Content (Not MVP): Share and explore unique audio compositions from fellow readers.
+3. TODO: Check if ISBN is different for each book
+4. Synchronized Soundscapes: Enjoy soundscapes that complement the atmosphere and events of each chapter.
+5. Seamless Transitions: Experience uninterrupted reading with smooth transitions between soundscapes with just one click.
+6. User-Generated Content (Not MVP): Share and explore unique audio compositions from fellow readers.
